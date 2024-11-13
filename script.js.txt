@@ -1,0 +1,32 @@
+const board = [];
+const gameBoard = document.getElementById("game-board");
+
+function initializeBoard() {
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+            const square = document.createElement("div");
+            square.classList.add("square");
+            if ((i + j) % 2 === 1) {
+                square.classList.add("dark");
+
+                // Add red pieces on the top three rows
+                if (i < 3) {
+                    const piece = document.createElement("div");
+                    piece.classList.add("red-piece");
+                    square.appendChild(piece);
+                }
+                // Add black pieces on the bottom three rows
+                else if (i > 4) {
+                    const piece = document.createElement("div");
+                    piece.classList.add("black-piece");
+                    square.appendChild(piece);
+                }
+            } else {
+                square.classList.add("light");
+            }
+            gameBoard.appendChild(square);
+        }
+    }
+}
+
+initializeBoard();
